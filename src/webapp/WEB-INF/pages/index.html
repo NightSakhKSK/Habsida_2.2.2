@@ -10,6 +10,11 @@
     <th:block th:each="msg : ${messages}">
         <h1 th:text="${msg}"></h1>
     </th:block>
+    <form action="http://localhost:8080/spring_mvc_war_exploded/cars?="th:value="value" method="get">
+        <input type="text" name="count"
+               placeholder="Enter count of cars"/>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 </body>
 </html>
