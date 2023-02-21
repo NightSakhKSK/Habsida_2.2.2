@@ -18,8 +18,13 @@ public class CarController {
 private CarService carService;
     @GetMapping
     public String getCars(@RequestParam(name = "count", required = false, defaultValue = "5") int count, Model model) {
-        List<Car> cars = carService.getCars(count);
-        model.addAttribute("cars", cars);
-        return "cars";
+        if (count < 0) {
+            model.addAttribute("error", "please add positive number of cars count");
+            return "index";
+        } else {
+            List<Car> cars = carService.getCars(count);
+            model.addAttribute("cars", cars);
+            return "cars";
+        }
     }
 }
